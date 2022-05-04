@@ -41,30 +41,35 @@ class LinkedList:
             node = node.next
         return found_elements
 
+    def update_tail(self):
+        tail = self.head
+        while tail is not None:
+            if tail.next is None:
+                self.tail = tail
+            tail = tail.next
+
     def delete(self, val, all=False):
         # empty ll
         if self.head is None:
             return
 
-        if self.head.next is None:
-            if self.head.value == val:
-                self.head = None
-                return
-
         head = self.head
-        while head.value == val:
+        while head is not None and head.value == val:
             self.head = self.head.next
             if not all:
                 return
             head = head.next
 
         node = self.head
-        while node.next is not None:
-            if node.next.value == val:
-                node.next = node.next.next
+        while node is not None and node.next is not None:
+            node_before_duplicates = node
+            while node_before_duplicates.next is not None and node_before_duplicates.next.value == val:
+                node_before_duplicates.next = node_before_duplicates.next.next
                 if not all:
                     return
             node = node.next
+
+        self.update_tail()
 
     def clean(self):
         self.head = None
@@ -80,6 +85,7 @@ class LinkedList:
 
     def insert(self, afterNode, newNode):
         if afterNode is None:
+            newNode.next = self.head
             self.head = newNode
         node = self.head
         while node is not None:
@@ -88,6 +94,7 @@ class LinkedList:
                 node.next = newNode
                 return
             node = node.next
+        self.update_tail()
 
     def __eq__(self, other):
         if self.head is None and other.head is None:

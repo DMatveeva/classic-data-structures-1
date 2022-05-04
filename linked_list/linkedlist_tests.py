@@ -2,6 +2,7 @@ import unittest
 from linkedlist import LinkedList
 from linkedlist import Node
 
+
 class MyTestCase(unittest.TestCase):
 
     def test_equals_empty_ll(self):
@@ -10,15 +11,14 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(empty_ll_1, empty_ll_2)
 
     def test_equals_same_ll(self):
-        ll_1 = LinkedList().fill_from_array([1,1,1,4,0])
-        ll_2 = LinkedList().fill_from_array([1,1,1,4,0])
+        ll_1 = LinkedList().fill_from_array([1, 1, 1, 4, 0])
+        ll_2 = LinkedList().fill_from_array([1, 1, 1, 4, 0])
         self.assertEqual(ll_1, ll_2)
 
     def test_equals_not_same(self):
         ll_1 = LinkedList().fill_from_array([1, 1])
         ll_2 = LinkedList().fill_from_array([1, 1, 1, 4, 0])
         self.assertNotEqual(ll_1, ll_2)
-
 
     def test_delete_from_empty_ll(self):
         ll = LinkedList()
@@ -40,13 +40,38 @@ class MyTestCase(unittest.TestCase):
         ll.delete(2)
         self.assertEqual(ll, LinkedList().fill_from_array([1]))
 
+    def test_delete_all_from_head(self):
+        ll = LinkedList().fill_from_array([1, 2, 1, 1, 2, 3, 4, 1, 1])
+        ll.delete(1, True)
+        self.assertEqual(ll, LinkedList().fill_from_array([2, 2, 3, 4]))
+
+    def test_delete_all(self):
+        ll = LinkedList().fill_from_array([1, 1, 1, 1, 1, 1, 1, 1, 1, 2])
+        ll.delete(2, True)
+        self.assertEqual(ll, LinkedList().fill_from_array([1, 1, 1, 1, 1, 1, 1, 1, 1]))
+
+    def test_delete_1(self):
+        ll = LinkedList().fill_from_array([1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1])
+        ll.delete(1, True)
+        self.assertEqual(ll, LinkedList().fill_from_array([2]))
+
+    def test_delete_2(self):
+        ll = LinkedList().fill_from_array([1, 1, 1])
+        ll.delete(1, True)
+        self.assertEqual(ll, LinkedList().fill_from_array([]))
+
+    def test_delete_3(self):
+        ll = LinkedList().fill_from_array([1, 1, 1])
+        ll.delete(1, True)
+        self.assertEqual(ll, LinkedList().fill_from_array([]))
+
     def test_delete_present_element_from_big_ll(self):
         ll = LinkedList().fill_from_array([k for k in range(1,10000)])
         ll.delete(20)
 
         array_2 = []
         for k in range(1, 10000):
-            if (k != 20):
+            if k != 20:
                 array_2 += [k]
         ll_2 = LinkedList().fill_from_array(array_2)
         self.assertEqual(ll, ll_2)
@@ -62,7 +87,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(result, [ll.head])
 
     def test_find_all(self):
-        ll = LinkedList().fill_from_array([1,1,2,3,4,1])
+        ll = LinkedList().fill_from_array([1, 1, 2, 3, 4, 1])
         result = ll.find_all(1)
         ll.delete(2)
         ll.delete(3)
