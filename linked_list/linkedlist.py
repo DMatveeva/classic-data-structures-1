@@ -51,10 +51,12 @@ class LinkedList:
                 self.head = None
                 return
 
-        if self.head.value == val:
+        head = self.head
+        while head.value == val:
             self.head = self.head.next
             if not all:
                 return
+            head = head.next
 
         node = self.head
         while node.next is not None:
@@ -107,3 +109,12 @@ class LinkedList:
             node = Node(value)
             self.add_in_tail(node)
         return self
+
+    def __str__(self):
+        node = self.head
+        string = ''
+        while node is not None:
+            string += f'{node.value}, '
+            node = node.next
+        return string
+
