@@ -34,16 +34,22 @@ class MyTestCase(unittest.TestCase):
         ll = LinkedList().fill_from_array([1])
         ll.delete(1)
         self.assertEqual(ll, LinkedList())
+        self.assertEqual(ll.tail, None)
+        self.assertEqual(ll.head, None)
 
     def test_delete_not_present_element_from_single_element_ll(self):
         ll = LinkedList().fill_from_array([1])
         ll.delete(2)
         self.assertEqual(ll, LinkedList().fill_from_array([1]))
+        self.assertEqual(ll.tail.value, 1)
+        self.assertEqual(ll.head.value, 1)
 
     def test_delete_all_from_head(self):
         ll = LinkedList().fill_from_array([1, 2, 1, 1, 2, 3, 4, 1, 1])
         ll.delete(1, True)
         self.assertEqual(ll, LinkedList().fill_from_array([2, 2, 3, 4]))
+        self.assertEqual(ll.tail.value, 4)
+        self.assertEqual(ll.head.value, 2)
 
     def test_delete_all(self):
         ll = LinkedList().fill_from_array([1, 1, 1, 1, 1, 1, 1, 1, 1, 2])
@@ -54,16 +60,14 @@ class MyTestCase(unittest.TestCase):
         ll = LinkedList().fill_from_array([1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1])
         ll.delete(1, True)
         self.assertEqual(ll, LinkedList().fill_from_array([2]))
+        self.assertEqual(ll.tail.value, 2)
 
     def test_delete_2(self):
         ll = LinkedList().fill_from_array([1, 1, 1])
         ll.delete(1, True)
         self.assertEqual(ll, LinkedList().fill_from_array([]))
-
-    def test_delete_3(self):
-        ll = LinkedList().fill_from_array([1, 1, 1])
-        ll.delete(1, True)
-        self.assertEqual(ll, LinkedList().fill_from_array([]))
+        self.assertEqual(ll.head, None)
+        self.assertEqual(ll.tail, None)
 
     def test_delete_present_element_from_big_ll(self):
         ll = LinkedList().fill_from_array([k for k in range(1,10000)])
@@ -75,6 +79,8 @@ class MyTestCase(unittest.TestCase):
                 array_2 += [k]
         ll_2 = LinkedList().fill_from_array(array_2)
         self.assertEqual(ll, ll_2)
+        self.assertEqual(ll.head.value, 1)
+
 
     def test_find_all_empty_ll(self):
         ll = LinkedList()
@@ -136,6 +142,12 @@ class MyTestCase(unittest.TestCase):
         ll.add_in_tail(node3)
         ll.insert(node2, Node(4))
         self.assertEqual(ll, LinkedList().fill_from_array([1, 2, 4, 3]))
+
+    def test_insert_3(self):
+        ll = LinkedList()
+        ll.insert(None, Node(4))
+        self.assertEqual(ll, LinkedList().fill_from_array([4]))
+        self.assertEqual(ll.tail.value, 4)
 
 
 if __name__ == '__main__':
