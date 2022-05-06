@@ -87,15 +87,16 @@ class LinkedList:
             self.head = newNode
             if self.head.next is None:
                 self.tail = self.head
-        node = self.head
-        while node is not None:
-            if node is afterNode:
-                newNode.next = node.next
-                node.next = newNode
-                if newNode.next is None:
-                    self.tail = newNode
-                return
-            node = node.next
+        else:
+            node = self.head
+            while node is not None:
+                    if node is afterNode:
+                        newNode.next = node.next
+                        node.next = newNode
+                        if newNode.next is None:
+                            self.tail = newNode
+                        return
+                    node = node.next
 
     def __eq__(self, other):
         if self.head is None and other.head is None:
