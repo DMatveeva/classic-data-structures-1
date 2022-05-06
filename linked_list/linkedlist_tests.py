@@ -1,4 +1,6 @@
 import unittest
+
+from linked_list.new_linked_list import create_linkedlist_from_sum
 from linkedlist import LinkedList
 from linkedlist import Node
 
@@ -148,6 +150,19 @@ class MyTestCase(unittest.TestCase):
         ll.insert(None, Node(4))
         self.assertEqual(ll, LinkedList().fill_from_array([4]))
         self.assertEqual(ll.tail.value, 4)
+
+    def test_sum(self):
+        ll1 = LinkedList().fill_from_array([1, 1, 1, 1])
+        ll2 = LinkedList().fill_from_array([1, 1, 1, 1])
+        new_ll = create_linkedlist_from_sum(ll1, ll2)
+        self.assertEqual(new_ll, LinkedList().fill_from_array([2, 2, 2, 2]))
+
+        ll1 = LinkedList()
+        ll2 = LinkedList()
+        new_ll = create_linkedlist_from_sum(ll1, ll2)
+        self.assertEqual(new_ll, LinkedList())
+
+
 
 
 if __name__ == '__main__':
