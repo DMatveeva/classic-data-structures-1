@@ -103,14 +103,13 @@ class LinkedList2:
             return True
         if self.len() != other.len():
             return False
-        else:
-            node_from_self = self.head
-            node_from_other = other.head
-            while node_from_other is not None:
-                if node_from_self.value != node_from_other.value:
-                    return False
-                node_from_other = node_from_other.next
-                node_from_self = node_from_self.next
+        node_from_self = self.head
+        node_from_other = other.head
+        while node_from_other is not None:
+            if node_from_self.value != node_from_other.value:
+                return False
+            node_from_other = node_from_other.next
+            node_from_self = node_from_self.next
         return True
 
     def __str__(self):
