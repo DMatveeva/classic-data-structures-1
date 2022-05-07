@@ -35,17 +35,21 @@ class DynArray:
     def insert(self, i, itm):
         if i < 0 or i > self.count:
             raise IndexError('Index is out of bounds')
-        if self.count + 1 > self.capacity:
+        if self.count == self.capacity:
             self.resize(2 * self.capacity)
-        index_of_copying_element = self.count - 1
-        self.count += 1
-        while index_of_copying_element != i - 1:
-            self.array[index_of_copying_element + 1] = self.array[index_of_copying_element]
-            index_of_copying_element -= 1
+        index = self.count
+        while index != i:
+            self.array[index] = self.array[index - 1]
+            index -= 1
         self.array[i] = itm
+        self.count += 1
 
     def __eq__(self, other):
-        if self.count != other.count or self.capacity != other.capacity:
+        if self.count != other.count:
+            print('Count differs')
+            return False
+        if self.capacity != other.capacity:
+            print('capacity differs')
             return False
         i = 0
         while i < self.count:
