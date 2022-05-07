@@ -4,16 +4,10 @@ class Node:
         self.prev = None
         self.next = None
 
-    def is_real(self):
-        return True
-
 
 class DummyNode(Node):
     def __init__(self):
         super().__init__("This is error. You shouldn't see this, it's a dummy node.")
-
-    def is_real(self):
-        return False
 
 
 class LinkedList2:
@@ -36,7 +30,7 @@ class LinkedList2:
     def find(self, val):
         node = self.head
         while node is not None:
-            if node.value == val and node.is_real():
+            if node.value == val and not isinstance(node, DummyNode):
                 return node
             node = node.next
         return None
@@ -45,7 +39,7 @@ class LinkedList2:
         result = []
         node = self.head
         while node is not None:
-            if node.value == val and node.is_real():
+            if node.value == val and not isinstance(node, DummyNode):
                 result.append(node)
             node = node.next
         return result
@@ -53,7 +47,7 @@ class LinkedList2:
     def delete(self, val, all=False):
         node = self.head
         while node is not None:
-            if node.value == val and node.is_real():
+            if node.value == val and not isinstance(node, DummyNode):
                 node.prev.next = node.next
                 node.next.prev = node.prev
                 if not all:
@@ -79,7 +73,7 @@ class LinkedList2:
             self.add_in_tail(newNode)
         node = self.head
         while node is not self.tail:
-            if node == afterNode and node.is_real():
+            if node == afterNode and not isinstance(node, DummyNode):
                 afterNode.next.prev = newNode
                 newNode.next = afterNode.next
                 newNode.prev = afterNode
