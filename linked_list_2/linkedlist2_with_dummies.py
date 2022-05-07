@@ -99,7 +99,9 @@ class LinkedList2:
         return self
 
     def __eq__(self, other):
-        if self.head is None and other.head is None:
+        if not isinstance(other, self.__class__):
+            return False
+        if self.head.next is None and other.head.next is None:
             return True
         if self.len() != other.len():
             return False
