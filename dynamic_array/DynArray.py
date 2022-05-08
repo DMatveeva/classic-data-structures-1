@@ -78,4 +78,3 @@ class DynArray:
             index += 1
         self.array[self.count - 1] = None
         self.count -= 1
-        print(self)
