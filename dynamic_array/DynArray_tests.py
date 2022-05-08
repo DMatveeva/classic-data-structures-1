@@ -55,8 +55,29 @@ class MyTestCase(unittest.TestCase):
         array = DynArray().fill(0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
         self.assertEqual(da, array)
 
+        da.delete(0)
+        da.delete(0)
+        da.delete(0)
+        da.delete(0)
+        da.delete(0)
+        self.assertEqual(da.count, 10)
+        self.assertEqual(da.capacity, 16)
+        array = DynArray().fill(6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
+        self.assertEqual(da, array)
+
         with self.assertRaises(IndexError) as context:
             da.delete(20)
+
+        da = DynArray()
+        with self.assertRaises(IndexError) as context:
+            da.delete(200)
+
+        da = DynArray()
+        da.fill(0, 1)
+        da.delete(1)
+        self.assertEqual(da.count, 1)
+        self.assertEqual(da.capacity, 16)
+        self.assertEqual(da, DynArray().fill(0))
 
 
 if __name__ == '__main__':
