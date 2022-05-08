@@ -45,12 +45,6 @@ class DynArray:
         self.count += 1
 
     def __eq__(self, other):
-        if self.count != other.count:
-            print('Count differs')
-            return False
-        if self.capacity != other.capacity:
-            print('capacity differs')
-            return False
         i = 0
         while i < self.count:
             if self.array[i] != other.array[i]:
@@ -72,5 +66,13 @@ class DynArray:
         return string
 
     def delete(self, i):
-        pass
-# удаляем объект в позиции i
+        if i < 0 or i >= self.count:
+            raise IndexError('Index is out of bounds')
+        if self.count - 1 < self.capacity * 0.5 and self.capacity // 1.5 >= 16:
+            self.resize(int(self.capacity // 1.5))
+        index = i + 1
+        while index != self.count:
+            self.array[index - 1] = self.array[index]
+            index += 1
+        self.array[self.count - 1] = None
+        self.count -= 1
