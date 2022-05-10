@@ -11,19 +11,17 @@ def postfix_calculation(string):
     while element is not None:
         if element.isdigit():
             stack_2.push(int(element))
-        elif element == '+':
-            stack_2.push(stack_2.pop() + stack_2.pop())
+        element_1 = stack_2.pop()
+        element_2 = stack_2.pop()
+        if element == '+':
+            stack_2.push(element_1 + element_2)
         elif element == '*':
-            stack_2.push(stack_2.pop() * stack_2.pop())
+            stack_2.push(element_1 * element_2)
         elif element == '-':
-            element_1 = stack_2.pop()
-            element_2 = stack_2.pop()
             stack_2.push(element_1 - element_2)
         elif element == '/':
-            element_1 = stack_2.pop()
-            element_2 = stack_2.pop()
             stack_2.push(element_1 / element_2)
         elif element == '=':
-            return stack_2.pop()
+            return element_1
         element = stack_1.pop()
 
