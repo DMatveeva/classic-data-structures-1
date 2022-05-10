@@ -7,7 +7,9 @@ def are_braces_balanced(string):
     for brace in string:
         if brace == '(':
             stack.push(0)
-        elif brace == ')' and stack.pop() is None:
+        elif brace == ')' and stack.peek() is None:
             return False
+        else:
+            stack.pop()
 
     return stack.size() == 0

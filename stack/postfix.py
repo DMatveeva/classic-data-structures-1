@@ -15,6 +15,10 @@ def postfix_calculation(string):
             stack_2.push(stack_2.pop() + stack_2.pop())
         elif element == '*':
             stack_2.push(stack_2.pop() * stack_2.pop())
+        elif element == '-':
+            stack_2.push(stack_2.pop() - stack_2.pop())
+        elif element == '/':
+            stack_2.push(stack_2.pop() / stack_2.pop())
         elif element == '=':
             return stack_2.pop()
         element = stack_1.pop()
