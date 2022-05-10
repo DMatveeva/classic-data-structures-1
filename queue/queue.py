@@ -4,7 +4,7 @@ class Queue:
         # инициализация хранилища данных
 
     def enqueue(self, item):
-        # вставка в хвост
+        pass # вставка в хвост
 
     def dequeue(self):
         # выдача из головы

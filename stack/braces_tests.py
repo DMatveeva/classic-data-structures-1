@@ -1,6 +1,6 @@
 import unittest
 from braces import are_braces_balanced
-from postfix import postfix_evaluation
+from postfix import postfix_calculation
 
 
 class MyTestCase(unittest.TestCase):
@@ -26,10 +26,10 @@ class MyTestCase(unittest.TestCase):
 
     def test_postfix(self):
         s = '8 2 + 5 * 9 + ='
-        self.assertEqual(postfix_evaluation(s), 59)
+        self.assertEqual(postfix_calculation(s), 59)
 
         s = '1 2 + 3 * ='
-        self.assertEqual(postfix_evaluation(s), 9)
+        self.assertEqual(postfix_calculation(s), 9)
 
 
 

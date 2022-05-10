@@ -11,6 +11,8 @@ def postfix_calculation(string):
     while element is not None:
         if element.isdigit():
             stack_2.push(int(element))
+            element = stack_1.pop()
+            continue
         element_1 = stack_2.pop()
         element_2 = stack_2.pop()
         if element == '+':
