@@ -1,7 +1,7 @@
 from stack.Stack import Stack
 
 
-def postfix_evaluation(string):
+def postfix_calculation(string):
     stack_1 = Stack()
     stack_2 = Stack()
     for element in reversed(string.split(' ')):
