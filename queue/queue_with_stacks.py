@@ -7,21 +7,17 @@ class QueueWithStacks:
         self.stack_for_dequeue = Stack()
 
     def enqueue(self, item):
-        i = 0
-        while self.stack_for_dequeue.peek() is not None:
-            self.stack_for_enqueue.push(self.stack_for_dequeue.pop())
-            i += 1
         self.stack_for_enqueue.push(item)
 
     def dequeue(self):
         if self.stack_for_dequeue.size() == 0 and self.stack_for_enqueue.size() == 0:
             return None
-        else:
+        if self.stack_for_dequeue.size() == 0:
             i = 0
             while self.stack_for_enqueue.peek() is not None:
                 self.stack_for_dequeue.push(self.stack_for_enqueue.pop())
                 i += 1
-            return self.stack_for_dequeue.pop()
+        return self.stack_for_dequeue.pop()
 
     def size(self):
         return self.stack_for_dequeue.size() or self.stack_for_enqueue.size()
