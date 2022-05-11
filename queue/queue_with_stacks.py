@@ -26,16 +26,6 @@ class QueueWithStacks:
     def size(self):
         return self.stack_for_dequeue.size() or self.stack_for_enqueue.size()
 
-    def __eq__(self, other):
-        if self.size() != other.size():
-            return False
-        i = 0
-        while i < self.size():
-            if self.queue[i] != other.queue[i]:
-                return False
-            i += 1
-        return True
-
     def __str__(self):
         string = ''
         i = 0
