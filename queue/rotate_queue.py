@@ -1,6 +1,3 @@
-from queue.Queue import Queue
-
-
 def rotate_queue(queue, n):
     remainder = n % queue.size()
     if remainder == 0:
