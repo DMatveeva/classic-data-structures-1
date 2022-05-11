@@ -14,7 +14,7 @@ class QueueWithStacks:
         self.stack_for_enqueue.push(item)
 
     def dequeue(self):
-        if self.stack_for_dequeue.size() and self.stack_for_enqueue.size() == 0:
+        if self.stack_for_dequeue.size() == 0 and self.stack_for_enqueue.size() == 0:
             return None
         else:
             i = 0

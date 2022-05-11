@@ -44,7 +44,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(queue.size(), 4)
 
         queue.dequeue()
-        self.assertEqual(queue.size(), 3)
+        queue.dequeue()
+        queue.dequeue()
+        self.assertEqual(queue.size(), 1)
 
 
 
