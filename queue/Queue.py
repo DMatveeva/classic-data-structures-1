@@ -14,16 +14,6 @@ class Queue:
     def size(self):
         return len(self.queue)
 
-    def __eq__(self, other):
-        if self.size() != other.size():
-            return False
-        i = 0
-        while i < self.size():
-            if self.queue[i] != other.queue[i]:
-                return False
-            i += 1
-        return True
-
     def __str__(self):
         string = ''
         i = 0
