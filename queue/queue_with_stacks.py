@@ -13,10 +13,8 @@ class QueueWithStacks:
         if self.stack_for_dequeue.size() == 0 and self.stack_for_enqueue.size() == 0:
             return None
         if self.stack_for_dequeue.size() == 0:
-            i = 0
-            while self.stack_for_enqueue.peek() is not None:
+            while self.stack_for_enqueue.size() > 0:
                 self.stack_for_dequeue.push(self.stack_for_enqueue.pop())
-                i += 1
         return self.stack_for_dequeue.pop()
 
     def size(self):
