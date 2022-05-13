@@ -1,6 +1,7 @@
 import unittest
 
 from deque.Deque import Deque
+from is_palindrome import is_palindrome
 
 
 class MyTestCase(unittest.TestCase):
@@ -48,6 +49,26 @@ class MyTestCase(unittest.TestCase):
         el = deque.removeTail()
         self.assertEqual(el, 0)
         self.assertEqual(deque.__str__(), '2,1,')
+
+    def test_is_palindrome(self):
+        string = 'Poor Dan is in a droop'
+        self.assertEqual(is_palindrome(string), True)
+
+        string = 'Alice'
+        self.assertEqual(is_palindrome(string), False)
+
+        string = ''
+        self.assertEqual(is_palindrome(string), False)
+
+        string = None
+        self.assertEqual(is_palindrome(string), False)
+
+        string = 'Sit on a potato pan, Otis.'
+        self.assertEqual(is_palindrome(string), True)
+
+
+
+
 
 
 
