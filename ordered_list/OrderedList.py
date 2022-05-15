@@ -65,6 +65,8 @@ class OrderedList:
         while node.next is not None:
             if node.value == val:
                 return node
+            if self.is_between_nodes(node, val) and self.compare(node.next.value, val) != 0:
+                return None
             node = node.next
 
     def is_value_outside_range(self, val):
