@@ -1,2 +1,5 @@
-print(1 or 0)
-print(0 or 1)
+asc = True
+a = 1
+b = -1
+print(a != asc)
+print(b != asc)
