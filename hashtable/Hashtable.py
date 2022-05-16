@@ -45,5 +45,4 @@ class HashTable:
         while i < self.size:
             s += f'{i}={self.slots[i]},'
             i += 1
-        print(s)
-
+        return s

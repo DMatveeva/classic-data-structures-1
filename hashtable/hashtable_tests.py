@@ -46,6 +46,22 @@ class MyTestCase(unittest.TestCase):
         ht.put(string)
         self.assertEqual(ht.find(string), 11)
 
+        string = 'loelh'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 14)
+
+        string = 'leolh'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 0)
+
+        string = 'elolh'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 3)
+
+        string = 'elohl'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 6)
+
 
 
 
