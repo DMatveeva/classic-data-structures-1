@@ -1,5 +1,6 @@
-asc = True
-a = 1
-b = -1
-print(a != asc)
-print(b != asc)
+hf = 0
+value = 'hello'
+for letter in value:
+    hf += ord(letter)
+a = hf % 17
+print(a)
