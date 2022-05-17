@@ -31,7 +31,8 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(ht.put(string), 8)
 
         self.assertEqual(ht.put(''), 0)
-        self.assertEqual(ht.put(None), 3)
+        self.assertEqual(ht.put(None), None)
+        self.assertEqual(ht.put(1), None)
 
 
 
@@ -109,12 +110,6 @@ class MyTestCase(unittest.TestCase):
         string = 'lleho'
         ht.put(string)
         self.assertEqual(ht.find(string), None)
-
-
-
-
-
-
 
 if __name__ == '__main__':
     unittest.main()

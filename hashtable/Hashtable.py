@@ -5,7 +5,7 @@ class HashTable:
         self.slots = [None] * self.size
 
     def hash_fun(self, value):
-        if value is None:
+        if value is None or not isinstance(value, str):
             return 0
         hf = 0
         for letter in value:
@@ -13,6 +13,8 @@ class HashTable:
         return hf % self.size
 
     def seek_slot(self, value):
+        if value is None or not isinstance(value, str):
+            return None
         index = self.hash_fun(value)
         if self.slots[index] is None or self.slots[index] == value:
             return index
