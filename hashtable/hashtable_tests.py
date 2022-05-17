@@ -33,6 +33,8 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(ht.put(''), 0)
         self.assertEqual(ht.put(None), None)
         self.assertEqual(ht.put(1), None)
+        self.assertEqual(ht.put('2'), 16)
+        self.assertEqual(ht.put('C'), 2)
 
 
 

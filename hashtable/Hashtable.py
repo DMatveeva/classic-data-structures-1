@@ -18,7 +18,7 @@ class HashTable:
         index = self.hash_fun(value)
         if self.slots[index] is None or self.slots[index] == value:
             return index
-        i = index + self.step
+        i = (index + self.step) % self.size
         while i != index:
             if self.slots[i] is None or self.slots[i] == value:
                 return i
@@ -36,7 +36,7 @@ class HashTable:
         index = self.hash_fun(value)
         if self.slots[index] == value:
             return index
-        i = index + self.step
+        i = (index + self.step) % self.size
         while i != index:
             if self.slots[i] == value:
                 return i
