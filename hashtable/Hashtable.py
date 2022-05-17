@@ -5,6 +5,8 @@ class HashTable:
         self.slots = [None] * self.size
 
     def hash_fun(self, value):
+        if value is None:
+            return 0
         hf = 0
         for letter in value:
             hf += ord(letter)

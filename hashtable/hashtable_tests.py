@@ -30,6 +30,10 @@ class MyTestCase(unittest.TestCase):
         string = 'oellh'
         self.assertEqual(ht.put(string), 8)
 
+        self.assertEqual(ht.put(''), 0)
+        self.assertEqual(ht.put(None), 3)
+
+
 
     def test_find(self):
         ht = HashTable(17, 3)
@@ -61,6 +65,50 @@ class MyTestCase(unittest.TestCase):
         string = 'elohl'
         ht.put(string)
         self.assertEqual(ht.find(string), 6)
+
+        string = 'eohll'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 9)
+
+        string = 'lhoel'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 12)
+
+        string = 'lheol'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 15)
+
+        string = 'hleol'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 1)
+
+        string = 'hlelo'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 4)
+
+        string = 'ehllo'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 7)
+
+        string = 'eholl'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 10)
+
+        string = 'holle'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 13)
+
+        string = 'eollh'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 16)
+
+        string = 'ellho'
+        ht.put(string)
+        self.assertEqual(ht.find(string), 2)
+
+        string = 'lleho'
+        ht.put(string)
+        self.assertEqual(ht.find(string), None)
 
 
 
