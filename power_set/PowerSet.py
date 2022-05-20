@@ -33,9 +33,9 @@ class PowerSet:
 
     def difference(self, set2):
         new_set = PowerSet()
-        for key2 in set2.values.keys():
-            if not self.get(key2):
-                new_set.put(key2)
+        for key in self.values.keys():
+            if not set2.get(key):
+                new_set.put(key)
         return new_set
 
     def issubset(self, set2):

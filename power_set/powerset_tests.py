@@ -102,12 +102,12 @@ class MyTestCase(unittest.TestCase):
         set1 = PowerSet()
         set2 = PowerSet()
         i = 0
-        while i < 20_000:
+        while i < 20_001:
             set1.put(i)
             i += 1
 
         i = 0
-        while i < 20_001:
+        while i < 20_000:
             set2.put(i)
             i += 1
 
@@ -120,7 +120,7 @@ class MyTestCase(unittest.TestCase):
 
         set3 = PowerSet()
         i = 0
-        while i < 20_000:
+        while i < 20_001:
             set3.put(i)
             i += 1
         result_set = set1.difference(set3)
